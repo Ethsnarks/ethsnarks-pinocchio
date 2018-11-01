@@ -7,7 +7,7 @@ EXAMPLE_OUTPUTS=$(subst examples/,build/,$(basename $(EXAMPLE_SOURCES)))
 #######################################################################
 
 
-all: $(addsuffix .arith,$(EXAMPLE_OUTPUTS))
+all: $(addsuffix .o,$(EXAMPLE_OUTPUTS)) $(addsuffix .arith,$(EXAMPLE_OUTPUTS))
 
 
 #######################################################################
@@ -15,6 +15,9 @@ all: $(addsuffix .arith,$(EXAMPLE_OUTPUTS))
 
 build:
 	mkdir -p $@
+
+build/%.o: examples/%.c build
+	$(CC) -c -o $@ $<
 
 build/%.dot: build/%.arith
 	PYTHONPATH=. python -mpinocchio.drawcircuit --arith $< --out $@

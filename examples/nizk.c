@@ -1,4 +1,4 @@
-#include "nizk-test-ifc.h"
+#include "nizk-ifc.h"
 
 
 void outsource(struct Input *input, struct NIZKInput *nizkinput, struct Output *output)

@@ -892,11 +892,13 @@ class Vercomp(object):
 			working_symtab = self.transform_while(statement, working_symtab)
 		elif isinstance(statement, c_ast.Compound):
 			working_symtab = self.transform_compound(statement, working_symtab)
+		elif isinstance(statement, c_ast.EmptyStatement):
+			pass
 		else:
 			print("class: ",statement.__class__)
 			print("dict: ",statement.__dict__)
 			print("ast: ",ast_show(statement))
-			assert(False)	# unimpl statement type
+			assert False	# unimpl statement type
 		if self.verbose:
 			print("after statement %s, symtab:" % ast_show(statement, oneline=True))
 			print("  %s"%working_symtab)

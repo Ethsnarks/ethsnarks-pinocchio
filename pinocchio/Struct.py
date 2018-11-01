@@ -23,7 +23,7 @@ class IntType(Type):
 		return 1
 
 	def __repr__(self):
-		return "int";
+		return "int"
 
 	def __cmp__(self, other):
 		return cmp(self.__class__, other.__class__)
@@ -32,7 +32,8 @@ class IntType(Type):
 		return False
 
 class UnsignedType(IntType):
-	pass
+	def __repr__(self):
+		return "unsigned int"
 
 class ArrayType(Type):
 	def __init__(self, type, size):
